@@ -15,6 +15,9 @@ public class Game : MonoBehaviour
     private float _timer = 0;
     private bool _gameIsEnded = false;
 
+    public GameObject winPanel;
+    public GameObject losePanel;
+
     private void Awake()
     {
         _timer = _timerValue;
@@ -23,6 +26,8 @@ public class Game : MonoBehaviour
     private void Start()
     {
         _exitFromLevel.Close();
+        winPanel.SetActive(false);
+        losePanel.SetActive(false);
     }
 
     private void Update()
@@ -80,6 +85,7 @@ public class Game : MonoBehaviour
         _gameIsEnded = true;
         _player.Disable();
         Debug.LogError("Victory");
+        winPanel.SetActive(true);
     }
 
     public void Lose()
@@ -87,5 +93,6 @@ public class Game : MonoBehaviour
         _gameIsEnded = true;
         _player.Disable();
         Debug.LogError("Lose");
+        losePanel.SetActive(true);
     }
 }
